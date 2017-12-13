@@ -130,9 +130,9 @@ void screenClear() {
 }
 
 
-void screenCursorToTop() {
+void screenCursorToTopLeft() {
 #ifdef SERIAL_TERMINAL_ANIMATION
-  printf("\033[%dA", HEIGHT);
+  printf("\033[0;0H");
 #endif
 }
 
@@ -156,7 +156,7 @@ int main(int argc, char **argv) {
       const float gamma   = rescale(sets[i].gamma,   sets[iNext].gamma,   percentage);
 
       mandelbrot(lookAtX, lookAtY, width, height, gamma);
-      screenCursorToTop();
+      screenCursorToTopLeft();
     }
   }
   screenClear();
