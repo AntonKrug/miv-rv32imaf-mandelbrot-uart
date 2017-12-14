@@ -161,9 +161,6 @@ int main(int argc, char **argv) {
   }
   screenClear();
   printf(microsemiLogo);
-  while (1) {
-    // in case of older core do not exit the main
-  }
   return 0;
 }
 
