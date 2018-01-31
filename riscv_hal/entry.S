@@ -57,7 +57,10 @@ handle_reset:
 #endif
 
   # initialize global pointer
+.option push
+.option norelax
   la gp, __global_pointer$
+.option pop
 
   # initialize stack pointer
   la sp, __stack_top
