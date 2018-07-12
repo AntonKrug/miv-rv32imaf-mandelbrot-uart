@@ -31,7 +31,7 @@ end
 
 target remote localhost:3333
 load *.elf
-break test_verify_break
+break testVerifyBreak
 continue
 
 # Arrived at the display_total_sum breakpoint 
@@ -47,7 +47,7 @@ if (current_configuration & 4)
     # hard float - will produce slightly different checksum for each iteration
     # the checksum overflows in such way that it's easy to precalculate it
     # in advance 
-    set $expected=0x3440f3d5 * current_iteration
+    set $expected=0x9c2eb37b * max_iterations
 else
     # soft float implementation
     set $expected=0x6673c18e * current_iteration

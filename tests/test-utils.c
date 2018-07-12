@@ -3,6 +3,7 @@
  * v1.0 2017/12/13 anton.krug@microsemi.com
  ******************************************************************************/
 
+#include <stdio.h>
 #include <float.h>
 #include "test-utils.h"
 
@@ -39,11 +40,17 @@ void testAddToChecksumFloat(float value) {
 
 void testVerifyBreak() {
   // when testing with gdb, place breakpoint here
+#ifdef GDB_TESTING
+  printf("Test point reached \n");
+  while (1);
+#endif
 }
 
 
 void testVerify() {
+#ifdef GDB_TESTING
   unsigned int current_state = getConfigurationState();
   testVerifyBreak();
+#endif
 }
 
