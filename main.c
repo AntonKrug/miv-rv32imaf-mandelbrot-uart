@@ -1,5 +1,5 @@
 /*******************************************************************************
- * (c) Copyright 2016-2017 Microsemi SoC Products Group. All rights reserved.
+ * (c) Copyright 2018 Microsemi SoC Products Group. All rights reserved.
  * v1.0 2017/12/13 anton.krug@microsemi.com
  * Using UART at 115200 baudrate with MiV Core running at 50MHz
  * Requires a 110x40 characters big terminal window
@@ -12,8 +12,19 @@
 #include <float.h>
 #include <math.h>
 
+#include "tests/test-utils.h"
+
 #define WIDTH 110
 #define HEIGHT 40
+
+#ifndef ITERATIONS
+#define ITERATIONS 1 // How many times repeat same the same the frame
+#endif
+const unsigned int max_iterations = ITERATIONS; // Use by gdb
+
+#ifndef ANIMATION_SPEED
+#define ANIMATION_SPEED 0.02f // How large steps are done between the frames
+#endif
 
 // https://stackoverflow.com/questions/37538/how-do-i-determine-the-size-of-my-array-in-c
 #define NELEMS(x) (sizeof(x) / sizeof((x)[0]))
@@ -111,6 +122,7 @@ void mandelbrot(float lookAtX, float lookAtY, float width, float height, float g
 
       // print nothing if iterated too much, or normalize the result and shade accordingly
       printf("%c", (iter >= maxIter) ? ' ' : shades[(int)(iter/gamma)]);
+      testAddToChecksumFloat(iter/gamma);
     }
     printf("\n");
   }
@@ -144,24 +156,29 @@ int main(int argc, char **argv) {
 
   // Render following mandelbrot series
   for (int i = 0 ; i < (NELEMS(sets) - 1); i++) {
-    for (float percentage = 0.0f; percentage <= 1.3f; percentage += 0.04f) {
+    for (float percentage = 0.0f; percentage <= 1.3f; percentage += ANIMATION_SPEED) {
       // display motion between the sets:
       // 0.0f to 1.0f will be transitions
       // 1.0f to 1.3f will render same frame (timing without using timer)
-      const int   iNext   = (i +1) % NELEMS(sets);
-      const float lookAtX = rescale(sets[i].lookAtX, sets[iNext].lookAtX, percentage);
-      const float lookAtY = rescale(sets[i].lookAtY, sets[iNext].lookAtY, percentage);
-      const float width   = rescale(sets[i].width,   sets[iNext].width,   percentage);
-      const float height  = rescale(sets[i].height,  sets[iNext].height,  percentage);
-      const float gamma   = rescale(sets[i].gamma,   sets[iNext].gamma,   percentage);
+      for (int iterate = 0; iterate < ITERATIONS; iterate++) {
+        // depending on the #define one image can be repeated multiple times
+        const int   iNext   = (i +1) % NELEMS(sets);
+        const float lookAtX = rescale(sets[i].lookAtX, sets[iNext].lookAtX, percentage);
+        const float lookAtY = rescale(sets[i].lookAtY, sets[iNext].lookAtY, percentage);
+        const float width   = rescale(sets[i].width,   sets[iNext].width,   percentage);
+        const float height  = rescale(sets[i].height,  sets[iNext].height,  percentage);
+        const float gamma   = rescale(sets[i].gamma,   sets[iNext].gamma,   percentage);
 
-      mandelbrot(lookAtX, lookAtY, width, height, gamma);
-      screenCursorToTopLeft();
+        mandelbrot(lookAtX, lookAtY, width, height, gamma);
+        screenCursorToTopLeft();
+      }
     }
   }
   screenClear();
   printf(microsemiLogo);
   
+  testVerify();
+
 #ifndef EXIT_FROM_THE_INFINITE_LOOP
   while(1);
 #endif
