@@ -1,0 +1,62 @@
+
+define print_separator
+  printf "\n********************************************************************************\n" 
+end
+
+
+define test_failed
+  # if it is not catched by any pass conditions, then it must be fail
+  print_separator
+  printf "FAILED the test\n"
+  print_separator
+
+  quit 150
+end
+
+
+define test_expected
+  printf "expected=%08X actual=%08X\n", $arg0, sum
+
+  if (sum == $arg0)
+    print_separator
+    print "PASSED the test\n"
+    print_separator
+
+    quit 149   
+  else
+    test_failed
+  end
+end
+
+
+target remote localhost:3333
+load *.elf
+break test_verify_break
+continue
+
+# Arrived at the display_total_sum breakpoint 
+# Check for all valid checkshums depending on the iterations proccessed
+
+printf "Test was iterated=%d times \n", current_iteration
+
+printf "Current build configuration is %08X \n", current_configuration
+
+set $expected=0 
+
+if (current_configuration & 4)
+    # hard float - will produce slightly different checksum for each iteration
+    # the checksum overflows in such way that it's easy to precalculate it
+    # in advance 
+    set $expected=0x3440f3d5 * current_iteration
+else
+    # soft float implementation
+    set $expected=0x6673c18e * current_iteration
+end
+
+test_expected $expected 
+
+print_separator
+printf "test failing because you use UNSUPORTED iterations.\n"
+print_separator
+
+test_failed
