@@ -165,6 +165,7 @@ Examples of output:
 
 # Mi-V Soft processor
 This example uses a Mi-V Soft processor MiV_RV32IMAF_L1_AHB. The design is built for debugging MiV_RV32IMAF_L1_AHB through the SmartFusion2 FPGA programming JTAG port using a FlashPro5. 
+There is second configuration "Debug-softfloat" which doesn't require F extension and can be used on non-F cores as well. It's slower and larger because all the aritmetics are implemented in software, it will need a DDR design as the binary might be too large for SRAM.
 
 All the platform/design specific definitions such as peripheral base addresses, system clock frequency (preconfigured for 40MHz) etc. are included in hw_platform.h. The hw_platform.h is located at the root folder of this project.
 
@@ -231,7 +232,7 @@ This example project can be used with another design using a different clock con
 The release mode configuration for this example project uses microsemi-riscv-ram.ld 
 linker script. This Linker script is specific for the SmartFusion2 target. It creates the executable image for the SRAM memory area. Compared to other examples (i.e. blinky) this ld script is using 64KB instead of 32KB and using both eSRAM_0 and eSRAM_1 of the SmartFusion2.
 
-An example design for SmartFusion2 90 Security Eval Kit is available at:
+An example design of a soft-float core for SmartFusion2 90 Security Eval Kit is available at:
 
 https://github.com/RISCV-on-Microsemi-FPGA/M2S090-Security-Eval-Kit
 
