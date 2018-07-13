@@ -7,7 +7,11 @@
 #include <float.h>
 #include "test-utils.h"
 
-unsigned int actualChecksum = 0;
+
+#ifdef GDB_TESTING
+  unsigned int actualChecksum = 0;
+  unsigned int current_configuration;
+#endif
 
 
 // this variable can be set by different defines when using different compile
@@ -15,6 +19,7 @@ unsigned int actualChecksum = 0;
 // what results the tests should use as the GDB test needs to have different
 // expected results for soft/hard floats as they slightly differ in the implementation.
 unsigned int getConfigurationState() {
+#ifdef GDB_TESTING
   unsigned int ret = 0;
 
   ret |= CONFIGURATION_RISCV;
@@ -25,16 +30,21 @@ unsigned int getConfigurationState() {
 #endif
 
   return ret;
+#endif
 }
 
 
 void testAddToChecksumInt(unsigned int checksum) {
+#ifdef GDB_TESTING
   actualChecksum += checksum;
+#endif
 }
 
 
 void testAddToChecksumFloat(float value) {
+#ifdef GDB_TESTING
   actualChecksum += *(unsigned int*)&value;
+#endif
 }
 
 
@@ -49,7 +59,7 @@ void testVerifyBreak() {
 
 void testVerify() {
 #ifdef GDB_TESTING
-  unsigned int current_configuration = getConfigurationState();
+  current_configuration = getConfigurationState();
   testVerifyBreak();
 #endif
 }
