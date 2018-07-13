@@ -9,7 +9,8 @@ define test_passed
   print "PASSED the test\n"
   print_separator
 
-  quit 149 # arbirtary number just to make it different from other generic exit codes
+  # arbirtary number just to make it different from other generic exit codes
+  quit 149 
 end
 
 
@@ -19,7 +20,8 @@ define test_failed
   printf "FAILED the test\n"
   print_separator
 
-  quit 150 # arbirtary number just to make it different from other generic exit codes
+  # arbirtary number just to make it different from other generic exit codes
+  quit 150 
 end
 
 
