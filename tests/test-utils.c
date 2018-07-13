@@ -49,7 +49,7 @@ void testVerifyBreak() {
 
 void testVerify() {
 #ifdef GDB_TESTING
-  unsigned int current_state = getConfigurationState();
+  unsigned int current_configuration = getConfigurationState();
   testVerifyBreak();
 #endif
 }
