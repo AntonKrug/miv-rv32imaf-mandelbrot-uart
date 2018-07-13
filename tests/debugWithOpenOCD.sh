@@ -13,7 +13,7 @@ echo "OpenOCD should be launched, start the gdb now:"
 
 echo "Go into first Debug folder I can find (make sure to run clean before this so there are not other folder present)"
 cd $TESTS_DIR/../Debug*
-$SC_DIR/riscv-unknown-elf-gcc/bin/riscv64-unknown-elf-gdb -x ../tests/gdb-test-checksum miv-rv32imaf-dct.elf miv-rv32imaf-dct.elf
+$SC_DIR/riscv-unknown-elf-gcc/bin/riscv64-unknown-elf-gdb -x ../tests/gdb-test-checksum *.elf
 RESULT=$? # Store the exit code
 
 $TESTS_DIR/killOpenOCD.sh
