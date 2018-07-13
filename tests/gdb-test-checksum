@@ -4,7 +4,7 @@ test_setup_default miv-rv32imaf-mandelbrot-uart.elf
 
 # Arrived at the testVerifyBreak breakpoint 
 
-test_display_enviroment
+test_display_enviroment max_iterations
 
 assert_equals 0x9c2eb37b*max_iterations actualChecksum
 
