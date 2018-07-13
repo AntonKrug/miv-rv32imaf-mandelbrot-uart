@@ -20,7 +20,7 @@
 #ifndef ITERATIONS
 #define ITERATIONS 1 // How many times repeat same the same the frame
 #endif
-const unsigned int max_iterations = ITERATIONS; // Use by gdb
+const unsigned int max_iterations = ITERATIONS; // Used by gdb tests
 
 #ifndef ANIMATION_SPEED
 #define ANIMATION_SPEED 0.02f // How large steps are done between the frames
