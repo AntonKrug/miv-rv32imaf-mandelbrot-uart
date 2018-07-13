@@ -1,6 +1,6 @@
 source ../tests/gdb-test-common
 
-test_setup_default
+test_setup_default miv-rv32imaf-mandelbrot-uart.elf
 
 # Arrived at the testVerifyBreak breakpoint 
 
