@@ -93,7 +93,7 @@
                             							
                             <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.toolchain.id.1167651343" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.toolchain.id" useByScannerDiscovery="false" value="-2032619395" valueType="string"/>
                             							
-                            <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.974725214" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align" useByScannerDiscovery="false" value="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.strict" valueType="enumerated"/>
+                            <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.974725214" name="Align" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align" useByScannerDiscovery="false" value="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.strict" valueType="enumerated"/>
                             							
                             <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnumcueclipse.managedbuild.cross.riscv.targetPlatform.1851994667" isAbstract="false" osList="all" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.targetPlatform"/>
                             							
@@ -128,6 +128,8 @@
                                     <listOptionValue builtIn="false" value="SERIAL_TERMINAL_ANIMATION"/>
                                     									
                                     <listOptionValue builtIn="false" value="HARD_FLOAT_DESIGN"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="GDB_TESTING"/>
                                     								
                                 </option>
                                 								
@@ -307,7 +309,7 @@
                             							
                             <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.abi.fp.1840170417" name="Floating point ABI" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.abi.fp" useByScannerDiscovery="false" value="ilg.gnumcueclipse.managedbuild.cross.riscv.option.abi.fp.single" valueType="enumerated"/>
                             							
-                            <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.251451934" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align" useByScannerDiscovery="false" value="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.strict" valueType="enumerated"/>
+                            <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.251451934" name="Align" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align" useByScannerDiscovery="false" value="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.strict" valueType="enumerated"/>
                             							
                             <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.toolchain.id.467607604" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.toolchain.id" value="-2032619395" valueType="string"/>
                             							
@@ -527,7 +529,7 @@
                             							
                             <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.toolchain.id.259717003" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.toolchain.id" useByScannerDiscovery="false" value="-2032619395" valueType="string"/>
                             							
-                            <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.330733850" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align" useByScannerDiscovery="false" value="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.strict" valueType="enumerated"/>
+                            <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.330733850" name="Align" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align" useByScannerDiscovery="false" value="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.strict" valueType="enumerated"/>
                             							
                             <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnumcueclipse.managedbuild.cross.riscv.targetPlatform.1375396803" isAbstract="false" osList="all" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.targetPlatform"/>
                             							
@@ -558,6 +560,8 @@
                                 <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.defs.1814925823" name="Defined symbols (-D)" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.defs" useByScannerDiscovery="true" valueType="definedSymbols">
                                     									
                                     <listOptionValue builtIn="false" value="MSCC_STDIO_THRU_CORE_UART_APB"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="GDB_TESTING"/>
                                     									
                                     <listOptionValue builtIn="false" value="SERIAL_TERMINAL_ANIMATION"/>
                                     								
