@@ -20,7 +20,6 @@
 #ifndef ITERATIONS
 #define ITERATIONS 1 // How many times repeat same the same the frame
 #endif
-const unsigned int max_iterations = ITERATIONS; // Used by gdb tests
 
 #ifndef ANIMATION_SPEED
 #define ANIMATION_SPEED 0.02f // How large steps are done between the frames
@@ -177,7 +176,7 @@ int main(int argc, char **argv) {
   screenClear();
   printf(microsemiLogo);
   
-  testVerify();
+  testVerify(ITERATIONS);
 
 #ifndef EXIT_FROM_THE_INFINITE_LOOP
   while(1);

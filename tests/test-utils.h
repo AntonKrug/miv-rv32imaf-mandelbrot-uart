@@ -9,7 +9,7 @@
 #define CONFIGURATION_OPTIMALIZATION_2 32
 #define CONFIGURATION_OPTIMALIZATION_3 64
 
-extern void testVerify();
+extern void testVerify(unsigned int iteration);
 extern void testAddToChecksumInt(unsigned int checksum);
 extern void testAddToChecksumFloat(float value);
 

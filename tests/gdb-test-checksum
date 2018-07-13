@@ -4,9 +4,9 @@ test_setup_default miv-rv32imaf-mandelbrot-uart.elf
 
 # Arrived at the testVerifyBreak breakpoint 
 
-test_display_enviroment max_iterations
+test_display_enviroment iteration
 
-assert_equals 0x9c2eb37b*max_iterations actualChecksum
+assert_equals 0x9c2eb37b*iteration actualChecksum
 
-# if it doesn't failed on any present assets, that means they all passed 
+# if it doesn't failed on any previous asserts then that means they all passed 
 test_passed 

@@ -48,7 +48,7 @@ void testAddToChecksumFloat(float value) {
 }
 
 
-void testVerifyBreak() {
+void testVerifyBreak(unsigned int iteration) {
   // when testing with gdb, place breakpoint here
 #ifdef GDB_TESTING
   printf("Test point reached \n");
@@ -57,10 +57,10 @@ void testVerifyBreak() {
 }
 
 
-void testVerify() {
+void testVerify(unsigned int iteration) {
 #ifdef GDB_TESTING
   current_configuration = getConfigurationState();
-  testVerifyBreak();
+  testVerifyBreak(iteration);
 #endif
 }
 
