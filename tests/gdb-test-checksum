@@ -30,7 +30,7 @@ end
 
 
 target remote localhost:3333
-load *.elf
+load miv-rv32imaf-mandelbrot-uart.elf
 break testVerifyBreak
 continue
 
