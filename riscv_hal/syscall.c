@@ -5,8 +5,8 @@
  * @author Microsemi SoC Products Group
  * @brief Stubs for system calls.
  *
- * SVN $Revision: 9530 $
- * SVN $Date: 2017-10-16 17:53:02 +0530 (Mon, 16 Oct 2017) $
+ * SVN $Revision: 9587 $
+ * SVN $Date: 2017-11-16 12:53:31 +0530 (Thu, 16 Nov 2017) $
  */
 #include <stdint.h>
 #include <stdlib.h>
@@ -51,21 +51,19 @@ int errno;
 char *__env[1] = { 0 };
 char **environ = __env;
 
-volatile uint64_t tohost __attribute__((aligned(64)));
-volatile uint64_t fromhost __attribute__((aligned(64)));
-
 void write_hex(int fd, uint32_t hex)
 {
     uint8_t ii;
     uint8_t jj;
     char towrite;
+    uint8_t digit;
 
     write( fd , "0x", 2 );
 
     for (ii = 8 ; ii > 0; ii--)
     {
         jj = ii-1;
-        uint8_t digit = ((hex & (0xF << (jj*4))) >> (jj*4));
+        digit = ((hex & (0xF << (jj*4))) >> (jj*4));
         towrite = digit < 0xA ? ('0' + digit) : ('A' +  (digit - 0xA));
         write( fd, &towrite, 1);
     }
@@ -92,7 +90,7 @@ void *_sbrk(ptrdiff_t incr)
 
     if ((curbrk + incr < _end) || (curbrk + incr > _heap_end))
     {
-        return NULL - 1;
+        return ((char *) - 1);
     }
 
     curbrk += incr;

@@ -3,11 +3,10 @@
  *
  * @file entry.S
  * @author Microsemi SoC Products Group
- * @brief RISC-V soft processor CoreRISCV_AXI4 vectors, trap handling and
- *        startup code.
+ * @brief Mi-V soft processor vectors, trap handling and startup code.
  *
- * SVN $Revision: 9544 $
- * SVN $Date: 2017-10-21 19:32:36 +0530 (Sat, 21 Oct 2017) $
+ * SVN $Revision: 9587 $
+ * SVN $Date: 2017-11-16 12:53:31 +0530 (Thu, 16 Nov 2017) $
  */
 #ifndef ENTRY_S
 #define ENTRY_S
@@ -26,6 +25,7 @@
 
   .section      .text.entry
   .globl _start
+
 _start:
   j handle_reset
 
@@ -41,7 +41,7 @@ handle_reset:
   csrwi mstatus, 0
   csrwi mie, 0
 
-//Following lines are required for RV32IMF as described in SAR 92475
+/*Flaoting point support configuration*/
 
 #ifdef __riscv_flen
   csrr t0, mstatus

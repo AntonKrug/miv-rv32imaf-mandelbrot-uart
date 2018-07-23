@@ -3,12 +3,10 @@
  * 
  * @file riscv_hal.h
  * @author Microsemi SoC Products Group
- * @brief Hardware Abstraction Layer functions for RISC-V soft processor
- *        CoreRISCV_AXI4. This is mainly targeted at RV32IM but should be usable
- *        with other variants.
+ * @brief Hardware Abstraction Layer functions for Mi-V soft processors
  *
- * SVN $Revision: 9187 $
- * SVN $Date: 2017-05-13 13:31:28 +0530 (Sat, 13 May 2017) $
+ * SVN $Revision: 9575 $
+ * SVN $Date: 2017-11-14 14:23:11 +0530 (Tue, 14 Nov 2017) $
  */
 
 #ifndef RISCV_HAL_H
@@ -24,8 +22,8 @@ extern "C" {
  *Return value from External IRQ handler. This will be used to disable the External
  *interrupt.
  */
-#define EXT_IRQ_KEEP_ENABLED				0
-#define EXT_IRQ_DISABLE						1
+#define EXT_IRQ_KEEP_ENABLED                0
+#define EXT_IRQ_DISABLE                     1
 
 /*------------------------------------------------------------------------------
  * Interrupt enable/disable.

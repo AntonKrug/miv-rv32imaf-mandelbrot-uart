@@ -3,13 +3,10 @@
  *
  * @file riscv_hal.c
  * @author Microsemi SoC Products Group
- * @brief Implementation of Hardware Abstraction Layer for RISC-V soft processor
- *        CoreRISCV_AXI4.
- *        This is mainly targeted at RV32IM but should be usable with other
- *        variants.
+ * @brief Implementation of Hardware Abstraction Layer for Mi-V soft processors
  *
- * SVN $Revision: 9187 $
- * SVN $Date: 2017-05-13 13:31:28 +0530 (Sat, 13 May 2017) $
+ * SVN $Revision: 9575 $
+ * SVN $Date: 2017-11-14 14:23:11 +0530 (Tue, 14 Nov 2017) $
  */
 #include <stdlib.h>
 #include <stdint.h>
@@ -183,7 +180,7 @@ void handle_m_ext_interrupt()
 
     if(EXT_IRQ_DISABLE == disable)
     {
-    	PLIC_DisableIRQ(int_num);
+        PLIC_DisableIRQ((IRQn_Type)int_num);
     }
 }
 

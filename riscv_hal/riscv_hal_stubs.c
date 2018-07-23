@@ -3,14 +3,14 @@
  * 
  * @file riscv_hal_stubs.c
  * @author Microsemi SoC Products Group
- * @brief RISC-V soft processor CoreRISCV_AXI4 Function stubs.
+ * @brief Mi-V soft processor Interrupt Function stubs.
  * The functions below will only be linked with the application code if the user
  * does not provide an implementation for these functions. These functions are
  * defined with weak linking so that they can be overridden by a function with
  * same prototype in the user's application code.
  *
- * SVN $Revision: 9187 $
- * SVN $Date: 2017-05-13 13:31:28 +0530 (Sat, 13 May 2017) $
+ * SVN $Revision: 9575 $
+ * SVN $Date: 2017-11-14 14:23:11 +0530 (Tue, 14 Nov 2017) $
  */
 #include <unistd.h>
 

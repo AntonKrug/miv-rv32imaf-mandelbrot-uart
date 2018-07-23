@@ -3,11 +3,10 @@
  *
  * @file encodings.h
  * @author Microsemi SoC Products Group
- * @brief RISC-V soft processor CoreRISCV_AXI4 register bit mask and shift
- *        constants encodings.
+ * @brief Mi-V soft processor register bit mask and shift constants encodings.
  *
- * SVN $Revision: 9528 $
- * SVN $Date: 2017-10-16 17:51:12 +0530 (Mon, 16 Oct 2017) $
+ * SVN $Revision: 9587 $
+ * SVN $Date: 2017-11-16 12:53:31 +0530 (Thu, 16 Nov 2017) $
  */
 #ifndef RISCV_CSR_ENCODING_H
 #define RISCV_CSR_ENCODING_H
@@ -30,12 +29,12 @@ extern "C" {
 #define MSTATUS_FS          0x00006000
 #define MSTATUS_XS          0x00018000
 #define MSTATUS_MPRV        0x00020000
-#define MSTATUS_SUM         0x00040000		//changed in v1.10
-#define MSTATUS_MXR         0x00080000		//changed in v1.10
-#define MSTATUS_TVM         0x00100000		//changed in v1.10
-#define MSTATUS_TW 	        0x00200000		//changed in v1.10
-#define MSTATUS_TSR         0x00400000		//changed in v1.10
-#define MSTATUS_RES         0x7F800000		//changed in v1.10
+#define MSTATUS_SUM         0x00040000      /*changed in v1.10*/
+#define MSTATUS_MXR         0x00080000      /*changed in v1.10*/
+#define MSTATUS_TVM         0x00100000      /*changed in v1.10*/
+#define MSTATUS_TW          0x00200000      /*changed in v1.10*/
+#define MSTATUS_TSR         0x00400000      /*changed in v1.10*/
+#define MSTATUS_RES         0x7F800000      /*changed in v1.10*/
 #define MSTATUS32_SD        0x80000000
 #define MSTATUS64_SD        0x8000000000000000
 
@@ -98,11 +97,11 @@ extern "C" {
 #define DRAM_BASE           0x80000000
 
 // page table entry (PTE) fields
-#define PTE_V               0x001 // Valid
-#define PTE_TYPE            0x01E // Type
-#define PTE_R               0x020 // Referenced
-#define PTE_D               0x040 // Dirty
-#define PTE_SOFT            0x380 // Reserved for Software
+#define PTE_V               0x001       // Valid
+#define PTE_TYPE            0x01E       // Type
+#define PTE_R               0x020       // Referenced
+#define PTE_D               0x040       // Dirty
+#define PTE_SOFT            0x380       // Reserved for Software
 
 #define PTE_TYPE_TABLE        0x00
 #define PTE_TYPE_TABLE_GLOBAL 0x02
@@ -196,8 +195,8 @@ extern "C" {
 
 #ifdef __riscv_atomic
 
-#define MASK(nr)			(1UL << nr)
-#define MASK_NOT(nr)		(~(1UL << nr))
+#define MASK(nr)                    (1UL << nr)
+#define MASK_NOT(nr)                (~(1UL << nr))
 
 /**
  * atomic_read - read atomic variable
@@ -207,7 +206,7 @@ extern "C" {
  */
 static inline int atomic_read(const int *v)
 {
-	return *((volatile int *)(v));
+    return *((volatile int *)(v));
 }
 
 /**
@@ -219,7 +218,7 @@ static inline int atomic_read(const int *v)
  */
 static inline void atomic_set(int *v, int i)
 {
-	*v = i;
+    *v = i;
 }
 
 /**
@@ -231,21 +230,21 @@ static inline void atomic_set(int *v, int i)
  */
 static inline void atomic_add(int i, int *v)
 {
-	__asm__ __volatile__ (
-		"amoadd.w zero, %1, %0"
-		: "+A" (*v)
-		: "r" (i));
+    __asm__ __volatile__ (
+        "amoadd.w zero, %1, %0"
+        : "+A" (*v)
+        : "r" (i));
 }
 
 static inline int atomic_fetch_add(unsigned int mask, int *v)
 {
-	int out;
+    int out;
 
-	__asm__ __volatile__ (
-		"amoadd.w %2, %1, %0"
-		: "+A" (*v), "=r" (out)
-		: "r" (mask));
-	return out;
+    __asm__ __volatile__ (
+        "amoadd.w %2, %1, %0"
+        : "+A" (*v), "=r" (out)
+        : "r" (mask));
+    return out;
 }
 
 /**
@@ -257,18 +256,18 @@ static inline int atomic_fetch_add(unsigned int mask, int *v)
  */
 static inline void atomic_sub(int i, int *v)
 {
-	atomic_add(-i, v);
+    atomic_add(-i, v);
 }
 
 static inline int atomic_fetch_sub(unsigned int mask, int *v)
 {
-	int out;
+    int out;
 
-	__asm__ __volatile__ (
-		"amosub.w %2, %1, %0"
-		: "+A" (*v), "=r" (out)
-		: "r" (mask));
-	return out;
+    __asm__ __volatile__ (
+        "amosub.w %2, %1, %0"
+        : "+A" (*v), "=r" (out)
+        : "r" (mask));
+    return out;
 }
 
 /**
@@ -280,12 +279,12 @@ static inline int atomic_fetch_sub(unsigned int mask, int *v)
  */
 static inline int atomic_add_return(int i, int *v)
 {
-	register int c;
-	__asm__ __volatile__ (
-		"amoadd.w %0, %2, %1"
-		: "=r" (c), "+A" (*v)
-		: "r" (i));
-	return (c + i);
+    register int c;
+    __asm__ __volatile__ (
+        "amoadd.w %0, %2, %1"
+        : "=r" (c), "+A" (*v)
+        : "r" (i));
+    return (c + i);
 }
 
 /**
@@ -297,7 +296,7 @@ static inline int atomic_add_return(int i, int *v)
  */
 static inline int atomic_sub_return(int i, int *v)
 {
-	return atomic_add_return(-i, v);
+    return atomic_add_return(-i, v);
 }
 
 /**
@@ -308,7 +307,7 @@ static inline int atomic_sub_return(int i, int *v)
  */
 static inline void atomic_inc(int *v)
 {
-	atomic_add(1, v);
+    atomic_add(1, v);
 }
 
 /**
@@ -319,17 +318,17 @@ static inline void atomic_inc(int *v)
  */
 static inline void atomic_dec(int *v)
 {
-	atomic_add(-1, v);
+    atomic_add(-1, v);
 }
 
 static inline int atomic_inc_return(int *v)
 {
-	return atomic_add_return(1, v);
+    return atomic_add_return(1, v);
 }
 
 static inline int atomic_dec_return(int *v)
 {
-	return atomic_sub_return(1, v);
+    return atomic_sub_return(1, v);
 }
 
 /**
@@ -343,7 +342,7 @@ static inline int atomic_dec_return(int *v)
  */
 static inline int atomic_sub_and_test(int i, int *v)
 {
-	return (atomic_sub_return(i, v) == 0);
+    return (atomic_sub_return(i, v) == 0);
 }
 
 /**
@@ -356,7 +355,7 @@ static inline int atomic_sub_and_test(int i, int *v)
  */
 static inline int atomic_inc_and_test(int *v)
 {
-	return (atomic_inc_return(v) == 0);
+    return (atomic_inc_return(v) == 0);
 }
 
 /**
@@ -369,7 +368,7 @@ static inline int atomic_inc_and_test(int *v)
  */
 static inline int atomic_dec_and_test(int *v)
 {
-	return (atomic_dec_return(v) == 0);
+    return (atomic_dec_return(v) == 0);
 }
 
 /**
@@ -383,17 +382,17 @@ static inline int atomic_dec_and_test(int *v)
  */
 static inline int atomic_add_negative(int i, int *v)
 {
-	return (atomic_add_return(i, v) < 0);
+    return (atomic_add_return(i, v) < 0);
 }
 
 static inline int atomic_xchg(int *v, int n)
 {
-	register int c;
-	__asm__ __volatile__ (
-		"amoswap.w %0, %2, %1"
-		: "=r" (c), "+A" (*v)
-		: "r" (n));
-	return c;
+    register int c;
+    __asm__ __volatile__ (
+        "amoswap.w %0, %2, %1"
+        : "=r" (c), "+A" (*v)
+        : "r" (n));
+    return c;
 }
 
 /**
@@ -405,20 +404,20 @@ static inline int atomic_xchg(int *v, int n)
  */
 static inline void atomic_and(unsigned int mask, int *v)
 {
-	__asm__ __volatile__ (
-		"amoand.w zero, %1, %0"
-		: "+A" (*v)
-		: "r" (mask));
+    __asm__ __volatile__ (
+        "amoand.w zero, %1, %0"
+        : "+A" (*v)
+        : "r" (mask));
 }
 
 static inline int atomic_fetch_and(unsigned int mask, int *v)
 {
-	int out;
-	__asm__ __volatile__ (
-		"amoand.w %2, %1, %0"
-		: "+A" (*v), "=r" (out)
-		: "r" (mask));
-	return out;
+    int out;
+    __asm__ __volatile__ (
+        "amoand.w %2, %1, %0"
+        : "+A" (*v), "=r" (out)
+        : "r" (mask));
+    return out;
 }
 
 /**
@@ -430,20 +429,20 @@ static inline int atomic_fetch_and(unsigned int mask, int *v)
  */
 static inline void atomic_or(unsigned int mask, int *v)
 {
-	__asm__ __volatile__ (
-		"amoor.w zero, %1, %0"
-		: "+A" (*v)
-		: "r" (mask));
+    __asm__ __volatile__ (
+        "amoor.w zero, %1, %0"
+        : "+A" (*v)
+        : "r" (mask));
 }
 
 static inline int atomic_fetch_or(unsigned int mask, int *v)
 {
-	int out;
-	__asm__ __volatile__ (
-		"amoor.w %2, %1, %0"
-		: "+A" (*v), "=r" (out)
-		: "r" (mask));
-	return out;
+    int out;
+    __asm__ __volatile__ (
+        "amoor.w %2, %1, %0"
+        : "+A" (*v), "=r" (out)
+        : "r" (mask));
+    return out;
 }
 
 /**
@@ -455,20 +454,20 @@ static inline int atomic_fetch_or(unsigned int mask, int *v)
  */
 static inline void atomic_xor(unsigned int mask, int *v)
 {
-	__asm__ __volatile__ (
-		"amoxor.w zero, %1, %0"
-		: "+A" (*v)
-		: "r" (mask));
+    __asm__ __volatile__ (
+        "amoxor.w zero, %1, %0"
+        : "+A" (*v)
+        : "r" (mask));
 }
 
 static inline int atomic_fetch_xor(unsigned int mask, int *v)
 {
-	int out;
-	__asm__ __volatile__ (
-		"amoxor.w %2, %1, %0"
-		: "+A" (*v), "=r" (out)
-		: "r" (mask));
-	return out;
+    int out;
+    __asm__ __volatile__ (
+        "amoxor.w %2, %1, %0"
+        : "+A" (*v), "=r" (out)
+        : "r" (mask));
+    return out;
 }
 
 /*----------------------------------------------------*/
@@ -479,19 +478,18 @@ static inline int atomic_fetch_xor(unsigned int mask, int *v)
  * @addr: Address to count from
  *
  * This operation is atomic and cannot be reordered.
- * It may be reordered on other architectures than x86.
  * It also implies a memory barrier.
  */
 static inline int test_and_set_bit(int nr, volatile unsigned long *addr)
 {
-	unsigned long __res, __mask;
-	__mask = MASK(nr);
-	__asm__ __volatile__ (				\
-		"amoor.w %0, %2, %1"			\
-		: "=r" (__res), "+A" (*addr)	\
-		: "r" (__mask));				\
+    unsigned long __res, __mask;
+    __mask = MASK(nr);
+    __asm__ __volatile__ (                \
+        "amoor.w %0, %2, %1"            \
+        : "=r" (__res), "+A" (*addr)    \
+        : "r" (__mask));                \
 
-		return ((__res & __mask) != 0);
+        return ((__res & __mask) != 0);
 }
 
 
@@ -501,19 +499,18 @@ static inline int test_and_set_bit(int nr, volatile unsigned long *addr)
  * @addr: Address to count from
  *
  * This operation is atomic and cannot be reordered.
- * It can be reordered on other architectures other than x86.
  * It also implies a memory barrier.
  */
 static inline int test_and_clear_bit(int nr, volatile unsigned long *addr)
 {
-	unsigned long __res, __mask;
-	__mask = MASK_NOT(nr);
-	__asm__ __volatile__ (				\
-		"amoand.w %0, %2, %1"			\
-		: "=r" (__res), "+A" (*addr)	\
-		: "r" (__mask));				\
+    unsigned long __res, __mask;
+    __mask = MASK_NOT(nr);
+    __asm__ __volatile__ (                \
+        "amoand.w %0, %2, %1"            \
+        : "=r" (__res), "+A" (*addr)    \
+        : "r" (__mask));                \
 
-		return ((__res & __mask) != 0);
+        return ((__res & __mask) != 0);
 }
 
 /**
@@ -527,14 +524,14 @@ static inline int test_and_clear_bit(int nr, volatile unsigned long *addr)
 static inline int test_and_change_bit(int nr, volatile unsigned long *addr)
 {
 
-	unsigned long __res, __mask;
-	__mask = MASK(nr);
-	__asm__ __volatile__ (				\
-		"amoxor.w %0, %2, %1"			\
-		: "=r" (__res), "+A" (*addr)	\
-		: "r" (__mask));				\
+    unsigned long __res, __mask;
+    __mask = MASK(nr);
+    __asm__ __volatile__ (                \
+        "amoxor.w %0, %2, %1"            \
+        : "=r" (__res), "+A" (*addr)    \
+        : "r" (__mask));                \
 
-		return ((__res & __mask) != 0);
+        return ((__res & __mask) != 0);
 }
 
 /**
@@ -542,23 +539,15 @@ static inline int test_and_change_bit(int nr, volatile unsigned long *addr)
  * @nr: the bit to set
  * @addr: the address to start counting from
  *
- * This function is atomic and may not be reordered.  See __set_bit()
- * if you do not require the atomic guarantees.
- *
- * Note: there are no guarantees that this function will not be reordered
- * on non x86 architectures, so if you are writing portable code,
- * make sure not to rely on its reordering guarantees.
- *
- * Note that @nr may be almost arbitrarily large; this function is not
- * restricted to acting on a single-word quantity.
+ * This function is atomic and may not be reordered.
  */
 
 static inline void set_bit(int nr, volatile unsigned long *addr)
 {
-	__asm__ __volatile__ (					\
-		"AMOOR.w zero, %1, %0"			\
-		: "+A" (*addr)			\
-		: "r" (MASK(nr)));
+    __asm__ __volatile__ (                    \
+        "AMOOR.w zero, %1, %0"            \
+        : "+A" (*addr)            \
+        : "r" (MASK(nr)));
 }
 
 /**
@@ -566,17 +555,14 @@ static inline void set_bit(int nr, volatile unsigned long *addr)
  * @nr: Bit to clear
  * @addr: Address to start counting from
  *
- * clear_bit() is atomic and may not be reordered.  However, it does
- * not contain a memory barrier, so if it is used for locking purposes,
- * you should call smp_mb__before_clear_bit() and/or smp_mb__after_clear_bit()
- * in order to ensure changes are visible on other processors.
+ * clear_bit() is atomic and may not be reordered.
  */
 static inline void clear_bit(int nr, volatile unsigned long *addr)
 {
-	__asm__ __volatile__ (					\
-		"AMOAND.w zero, %1, %0"			\
-		: "+A" (*addr)			\
-		: "r" (MASK_NOT(nr)));
+    __asm__ __volatile__ (                    \
+        "AMOAND.w zero, %1, %0"            \
+        : "+A" (*addr)            \
+        : "r" (MASK_NOT(nr)));
 }
 
 /**
@@ -584,17 +570,14 @@ static inline void clear_bit(int nr, volatile unsigned long *addr)
  * @nr: Bit to change
  * @addr: Address to start counting from
  *
- * change_bit() is atomic and may not be reordered. It may be
- * reordered on other architectures than x86.
- * Note that @nr may be almost arbitrarily large; this function is not
- * restricted to acting on a single-word quantity.
+ * change_bit() is atomic and may not be reordered.
  */
 static inline void change_bit(int nr, volatile unsigned long *addr)
 {
-	__asm__ __volatile__ (					\
-			"AMOXOR.w zero, %1, %0"			\
-			: "+A" (*addr)			\
-			: "r" (MASK(nr)));
+    __asm__ __volatile__ (                    \
+            "AMOXOR.w zero, %1, %0"            \
+            : "+A" (*addr)            \
+            : "r" (MASK(nr)));
 }
 
 #endif /* __riscv_atomic */
@@ -609,5 +592,5 @@ static inline void change_bit(int nr, volatile unsigned long *addr)
 }
 #endif
 
-#endif	/*RISCV_CSR_ENCODING_H*/
+#endif    /*RISCV_CSR_ENCODING_H*/
 

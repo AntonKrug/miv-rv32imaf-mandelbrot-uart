@@ -3,11 +3,10 @@
  *
  * @file init.c
  * @author Microsemi SoC Products Group
- * @brief RISC-V soft processor CoreRISCV_AXI4 memory section initializations
- *        and start-up code.
+ * @brief Mi-V soft processor memory section initializations and start-up code.
  *
- * SVN $Revision: 9454 $
- * SVN $Date: 2017-09-27 16:15:17 +0530 (Wed, 27 Sep 2017) $
+ * SVN $Revision: 9575 $
+ * SVN $Date: 2017-11-14 14:23:11 +0530 (Tue, 14 Nov 2017) $
  */
 
 #include <stdlib.h>

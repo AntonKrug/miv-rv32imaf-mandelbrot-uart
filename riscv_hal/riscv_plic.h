@@ -1,16 +1,15 @@
 /*******************************************************************************
  * (c) Copyright 2016-2017 Microsemi SoC Products Group.  All rights reserved.
  *
- * @file riscv_CoreplexE31.h
+ * @file riscv_plic.h
  * @author Microsemi SoC Products Group
- * @brief RISC-V soft processor CoreRISCV_AXI4 PLIC and PRCI access data
- *        structures and functions.
+ * @brief Mi-V soft processor PLIC and PRCI access data structures and functions.
  *
- * SVN $Revision: 9558 $
- * SVN $Date: 2017-11-11 12:18:15 +0530 (Sat, 11 Nov 2017) $
+ * SVN $Revision: 9575 $
+ * SVN $Date: 2017-11-14 14:23:11 +0530 (Tue, 14 Nov 2017) $
  */
-#ifndef RISCV_COREPLEXE31_H
-#define RISCV_COREPLEXE31_H
+#ifndef RISCV_PLIC_H
+#define RISCV_PLIC_H
 
 #include <stdint.h>
 
@@ -164,12 +163,12 @@ static inline void PLIC_EnableIRQ(IRQn_Type IRQn)
  * number indicated by the parameter IRQn.
 
  * NOTE:
- * 	This function can be used to disable the external interrupt from outside
- * 	external interrupt handler function.
- * 	This function MUST NOT be used from within the External Interrupt handler.
- * 	If you wish to disable the external interrupt while the interrupt handler
- * 	for that external interrupt is executing then you must use the return value
- * 	EXT_IRQ_DISABLE to return from the extern interrupt handler.
+ *  This function can be used to disable the external interrupt from outside
+ *  external interrupt handler function.
+ *  This function MUST NOT be used from within the External Interrupt handler.
+ *  If you wish to disable the external interrupt while the interrupt handler
+ *  for that external interrupt is executing then you must use the return value
+ *  EXT_IRQ_DISABLE to return from the extern interrupt handler.
  */
 static inline void PLIC_DisableIRQ(IRQn_Type IRQn)
 {
@@ -247,4 +246,4 @@ static inline void clear_soft_interrupt()
 }
 #endif
 
-#endif  /* RISCV_COREPLEXE31_H */
+#endif  /* RISCV_PLIC_H */
