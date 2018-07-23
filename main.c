@@ -18,7 +18,7 @@
 #define HEIGHT 40
 
 #ifndef ITERATIONS
-#define ITERATIONS 1 // How many times repeat same the same the frame
+#define ITERATIONS 1 // How many times the same the frame should be repeated
 #endif
 
 #ifndef ANIMATION_SPEED
@@ -176,7 +176,7 @@ int main(int argc, char **argv) {
   screenClear();
   printf(microsemiLogo);
   
-  testValidate(ITERATIONS, 1);
+  testValidate(ITERATIONS, 1); // if GDB testing is enabled, it will validate the checksums
 
 #ifndef EXIT_FROM_THE_INFINITE_LOOP
   while(1);
