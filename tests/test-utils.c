@@ -10,7 +10,7 @@
 
 #ifdef GDB_TESTING
   unsigned int actualChecksum = 0;
-  unsigned int current_configuration;
+  unsigned int current_configuration = 0;
 #endif
 
 
@@ -48,19 +48,18 @@ void testAddToChecksumFloat(float value) {
 }
 
 
-void testVerifyBreak(unsigned int iteration) {
+void testValidateBreak(unsigned int iteration, unsigned int blocking) {
   // when testing with gdb, place breakpoint here
-#ifdef GDB_TESTING
+  volatile unsigned keepBlocking = blocking;
   printf("Test point reached \n");
-  while (1);
-#endif
+  while (keepBlocking);
 }
 
 
-void testVerify(unsigned int iteration) {
+void testValidate(unsigned int iteration, unsigned int blocking) {
 #ifdef GDB_TESTING
   current_configuration = getConfigurationState();
-  testVerifyBreak(iteration);
+  testValidateBreak(iteration, blocking);
 #endif
 }
 

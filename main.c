@@ -176,7 +176,7 @@ int main(int argc, char **argv) {
   screenClear();
   printf(microsemiLogo);
   
-  testVerify(ITERATIONS);
+  testValidate(ITERATIONS, 1);
 
 #ifndef EXIT_FROM_THE_INFINITE_LOOP
   while(1);
