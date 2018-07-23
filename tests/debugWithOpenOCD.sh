@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SC_DIR="${SC_DIR:-/mnt/bayShareExt/opt/Microsemi/scLinux-5.3-20180705-191129/}"
+SC_DIR="${SC_DIR:-/opt/Microsemi/SoftConsole-5.3/}"
 
 TESTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
