@@ -7,6 +7,10 @@
 #include <float.h>
 #include "test-utils.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #ifdef GDB_TESTING
   unsigned int actualChecksum = 0;
@@ -67,3 +71,6 @@ void testValidate(unsigned int iteration, unsigned int blocking) {
 #endif
 }
 
+#ifdef __cplusplus
+}
+#endif
