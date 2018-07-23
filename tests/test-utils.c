@@ -49,10 +49,12 @@ void testAddToChecksumFloat(float value) {
 
 
 void testValidateBreak(unsigned int iteration, unsigned int blocking) {
+#ifdef GDB_TESTING
   // when testing with gdb, place breakpoint here
   volatile unsigned keepBlocking = blocking;
   printf("Test point reached \n");
   while (keepBlocking);
+#endif
 }
 
 
