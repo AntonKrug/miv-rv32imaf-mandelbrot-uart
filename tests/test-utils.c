@@ -30,6 +30,8 @@ unsigned int getConfigurationState() {
 #endif
 
   return ret;
+#else
+  return 0;
 #endif
 }
 
