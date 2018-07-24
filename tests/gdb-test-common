@@ -50,7 +50,7 @@ end
 define test_setup_default
   connect_openocd_default
   load $arg0
-  break testVerifyBreak
+  break testValidateBreak
   continue
 end
 
