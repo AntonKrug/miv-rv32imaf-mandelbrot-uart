@@ -126,8 +126,6 @@
                                     <listOptionValue builtIn="false" value="MSCC_STDIO_THRU_CORE_UART_APB"/>
                                     									
                                     <listOptionValue builtIn="false" value="SERIAL_TERMINAL_ANIMATION"/>
-                                    									
-                                    <listOptionValue builtIn="false" value="HARD_FLOAT_DESIGN"/>
                                     								
                                 </option>
                                 								
@@ -218,6 +216,8 @@
             </storageModule>
             			
             <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+            			
+            <storageModule moduleId="ilg.gnumcueclipse.managedbuild.packs"/>
             		
         </cconfiguration>
         		
@@ -309,7 +309,7 @@
                             							
                             <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.251451934" name="Align" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align" useByScannerDiscovery="false" value="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.align.strict" valueType="enumerated"/>
                             							
-                            <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.toolchain.id.467607604" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.toolchain.id" value="-2032619395" valueType="string"/>
+                            <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.toolchain.id.467607604" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.toolchain.id" useByScannerDiscovery="false" value="-2032619395" valueType="string"/>
                             							
                             <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnumcueclipse.managedbuild.cross.riscv.targetPlatform.2031024620" isAbstract="false" osList="all" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.targetPlatform"/>
                             							
