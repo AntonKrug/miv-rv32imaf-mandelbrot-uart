@@ -4,8 +4,8 @@
  * Platform definitions
  * Version based on requirements of RISCV-HAL
  *
- * SVN $Revision: 9546 $
- * SVN $Date: 2017-10-24 10:27:17 +0530 (Tue, 24 Oct 2017) $
+ * SVN $Revision: 9587 $
+ * SVN $Date: 2017-11-16 12:53:31 +0530 (Thu, 16 Nov 2017) $
  */
  /*=========================================================================*//**
   @mainpage Sample file detailing how hw_platform.h should be constructed for 
@@ -43,7 +43,6 @@
  * <corename>_<instance>_BASE_ADDR
  */
 #define COREUARTAPB0_BASE_ADDR          0x70001000UL
-#define COREGPIO_BASE_ADDR              0x70002000UL
 #define COREGPIO_IN_BASE_ADDR           0x70002000UL
 #define CORETIMER0_BASE_ADDR            0x70003000UL
 #define CORETIMER1_BASE_ADDR            0x70004000UL
@@ -56,7 +55,7 @@
  * interrupt from the Libero design.
  * There can be up to 31 external interrupts (IRQ[30:0] pins) on the Mi-V Soft
  * processor.The Mi-V Soft processor external interrupts are defined in the
- * riscv_CoreplexE31.h
+ * riscv_plic.h
  * These are of the form
  * typedef enum
 {
