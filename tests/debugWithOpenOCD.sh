@@ -14,7 +14,8 @@ echo "OpenOCD should be launched, start the gdb now:"
 echo "Go into first Debug folder I can find (make sure to run clean before this so there are not other folder present)"
 cd $TESTS_DIR/../Debug*
 $SC_DIR/riscv-unknown-elf-gcc/bin/riscv64-unknown-elf-gdb -x ../tests/gdb-test-checksum *.elf
-RESULT=$? # Store the exit code
+# Store the exit code
+RESULT=$?
 
 $TESTS_DIR/killOpenOCD.sh
 
@@ -30,7 +31,7 @@ fi
 
 if [ $RESULT == 150 ];
 then
-    echo "Exiting as FAILUER on test failed (the checksum didn't matched)"
+    echo "Exiting as FAILURE on test failed (the checksum didn't matched)"
 else
     echo "Exiting as FAILURE on the process failed (openocd/build/gdb)"
 fi

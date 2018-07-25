@@ -163,12 +163,12 @@ static inline void PLIC_EnableIRQ(IRQn_Type IRQn)
  * number indicated by the parameter IRQn.
 
  * NOTE:
- *  This function can be used to disable the external interrupt from outside
- *  external interrupt handler function.
- *  This function MUST NOT be used from within the External Interrupt handler.
- *  If you wish to disable the external interrupt while the interrupt handler
- *  for that external interrupt is executing then you must use the return value
- *  EXT_IRQ_DISABLE to return from the extern interrupt handler.
+ * 	This function can be used to disable the external interrupt from outside
+ * 	external interrupt handler function.
+ * 	This function MUST NOT be used from within the External Interrupt handler.
+ * 	If you wish to disable the external interrupt while the interrupt handler
+ * 	for that external interrupt is executing then you must use the return value
+ * 	EXT_IRQ_DISABLE to return from the extern interrupt handler.
  */
 static inline void PLIC_DisableIRQ(IRQn_Type IRQn)
 {
