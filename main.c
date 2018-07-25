@@ -98,7 +98,7 @@ void mandelbrot(float lookAtX, float lookAtY, float width, float height, float g
   const float stepY   = height / HEIGHT;
   const int   maxIter = (float)NELEMS(shades) * gamma;  // Max iterations will affect the "exposure"
 
-  printf("Center=%e,%e width=%e, height=%e\n", lookAtX, lookAtY, width, height);
+  printf("Center=%e,%e Size=%e,%e Gamma=%e\n", lookAtX, lookAtY, width, height, gamma);
 
   for (int cursorY = 2; cursorY < HEIGHT; cursorY++) {
     // skip few lines to allow margins for other text
@@ -168,6 +168,7 @@ int main(int argc, char **argv) {
         const float height  = rescale(sets[i].height,  sets[iNext].height,  percentage);
         const float gamma   = rescale(sets[i].gamma,   sets[iNext].gamma,   percentage);
 
+        printf("Set=%d Progress=%f ", i, percentage);
         mandelbrot(lookAtX, lookAtY, width, height, gamma);
         screenCursorToTopLeft();
       }
