@@ -43,7 +43,8 @@ struct MandelbrotView sets[] = {
   {-1.2059523f,   -0.34705183f, 0.36000158f,   0.17550077f,     2.0f},
   {-0.55f,        -0.64f,       0.15f,         0.115f,          4.0f},
   { 0.5f,          0.0f,        1.0f,          2.0f,            1.0f},
-  {-0.0068464412f,-0.80686056f, 0.0160606767f, 0.00782957993f, 12.0f}
+  { 0.003290713f, -0.7907230f,  0.03573984f,   0.04767370f,    11.0f},
+  {-0.0068464412f,-0.80686056f, 0.0160606767f, 0.00782957993f, 13.0f}
 };
 
 
@@ -154,7 +155,7 @@ int main(int argc, char **argv) {
   screenClear();
 
   // Render following mandelbrot series
-  for (int i = 0 ; i < (NELEMS(sets) - 1); i++) {
+  for (int i = 3 ; i < (NELEMS(sets) - 1); i++) {
     for (float percentage = 0.0f; percentage <= 1.3f; percentage += ANIMATION_SPEED) {
       // display motion between the sets:
       // 0.0f to 1.0f will be transitions
