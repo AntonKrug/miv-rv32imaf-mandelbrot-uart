@@ -113,13 +113,13 @@
                                 								
                                 <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.include.paths.1818715770" name="Include paths (-I)" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreUARTapb}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../drivers/CoreUARTapb&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/hal}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../hal&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/riscv_hal}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../riscv_hal&quot;"/>
                                     								
                                 </option>
                                 								
@@ -333,13 +333,13 @@
                                 								
                                 <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.include.paths.460648472" name="Include paths (-I)" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreUARTapb}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../drivers/CoreUARTapb&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/hal}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../hal&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/riscv_hal}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../riscv_hal&quot;"/>
                                     								
                                 </option>
                                 								
@@ -553,13 +553,13 @@
                                 								
                                 <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.include.paths.2116230516" name="Include paths (-I)" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreUARTapb}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../drivers/CoreUARTapb&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/hal}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../hal&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/riscv_hal}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../riscv_hal&quot;"/>
                                     								
                                 </option>
                                 								
@@ -769,13 +769,13 @@
                                 								
                                 <option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.include.paths.973700601" name="Include paths (-I)" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.c.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreUARTapb}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../drivers/CoreUARTapb&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/hal}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../hal&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/riscv_hal}&quot;"/>
+                                    <listOptionValue builtIn="false" value="&quot;../riscv_hal&quot;"/>
                                     								
                                 </option>
                                 								
