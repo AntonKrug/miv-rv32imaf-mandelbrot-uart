@@ -155,7 +155,7 @@ int main(int argc, char **argv) {
   screenClear();
 
   // Render following mandelbrot series
-  for (int i = 3 ; i < (NELEMS(sets) - 1); i++) {
+  for (int i = 0 ; i < (NELEMS(sets) - 1); i++) {
     for (float percentage = 0.0f; percentage <= 1.3f; percentage += ANIMATION_SPEED) {
       // display motion between the sets:
       // 0.0f to 1.0f will be transitions
