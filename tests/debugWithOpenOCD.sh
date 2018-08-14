@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SC_DIR="${SC_DIR:-/opt/Microsemi/SoftConsole-5.3/}"
+SC_DIR="${SC_DIR:-/opt/microsemi/softconsole/}"
 
 TESTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
