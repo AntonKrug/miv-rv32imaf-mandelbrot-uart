@@ -22,7 +22,7 @@ extern "C" {
 // configurations and then it can detected with GDB on runtime and distinguish
 // what results the tests should use as the GDB test needs to have different
 // expected results for soft/hard floats as they slightly differ in the implementation.
-unsigned int getConfigurationState() {
+unsigned int __attribute__((optimize("O0"))) getConfigurationState() {
 #ifdef GDB_TESTING
   unsigned int ret = 0;
 
@@ -40,21 +40,21 @@ unsigned int getConfigurationState() {
 }
 
 
-void testAddToChecksumInt(unsigned int checksum) {
+void  __attribute__((optimize("O0"))) testAddToChecksumInt(unsigned int checksum) {
 #ifdef GDB_TESTING
   actualChecksum += checksum;
 #endif
 }
 
 
-void testAddToChecksumFloat(float value) {
+void  __attribute__((optimize("O0"))) testAddToChecksumFloat(float value) {
 #ifdef GDB_TESTING
   actualChecksum += *(unsigned int*)&value;
 #endif
 }
 
 
-void testValidateBreak(unsigned int iteration, unsigned int blocking) {
+void  __attribute__((optimize("O0"))) testValidateBreak(unsigned int iteration, unsigned int blocking) {
 #ifdef GDB_TESTING
   // When testing with gdb, place breakpoint here
   volatile unsigned keepBlocking = blocking;
@@ -64,12 +64,13 @@ void testValidateBreak(unsigned int iteration, unsigned int blocking) {
 }
 
 
-void testValidate(unsigned int iteration, unsigned int blocking) {
+void  __attribute__((optimize("O0"))) testValidate(unsigned int iteration, unsigned int blocking) {
 #ifdef GDB_TESTING
   current_configuration = getConfigurationState();
   testValidateBreak(iteration, blocking);
 #endif
 }
+
 
 #ifdef __cplusplus
 }
