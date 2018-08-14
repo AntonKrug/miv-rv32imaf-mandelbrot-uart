@@ -9,7 +9,14 @@ function kill_all_existing {
     PIDS=`pidof $1`
     if [ "$PIDS" ];
     then
-        sudo kill $PIDS 
+        if [[ "$(command -v sudo)" ]];
+        then
+            # use regular kill if sudo is not present
+            kill $PIDS
+        else
+            # use sudo if it's found on the system
+            sudo kill $PIDS
+        fi 
     fi
     sleep 3
 
@@ -17,7 +24,14 @@ function kill_all_existing {
     if [ "$PIDS" ];
     then
         # agressive kill
-        sudo kill -9 $PIDS 
+        if [[ "$(command -v sudo)" ]];
+        then
+            # use regular kill if sudo is not present
+            kill -9 $PIDS
+        else
+            # use sudo if it's found on the system
+            sudo kill -9 $PIDS
+        fi 
     fi
     sleep 2
     echo "Is $1 still running? PIDs:"
