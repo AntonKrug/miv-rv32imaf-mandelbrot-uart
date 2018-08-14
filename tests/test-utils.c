@@ -40,21 +40,21 @@ unsigned int __attribute__((optimize("O0"))) getConfigurationState() {
 }
 
 
-void  __attribute__((optimize("O0"))) testAddToChecksumInt(unsigned int checksum) {
+void __attribute__((optimize("O0"))) testAddToChecksumInt(unsigned int checksum) {
 #ifdef GDB_TESTING
   actualChecksum += checksum;
 #endif
 }
 
 
-void  __attribute__((optimize("O0"))) testAddToChecksumFloat(float value) {
+void __attribute__((optimize("O0"))) testAddToChecksumFloat(float value) {
 #ifdef GDB_TESTING
   actualChecksum += *(unsigned int*)&value;
 #endif
 }
 
 
-void  __attribute__((optimize("O0"))) testValidateBreak(unsigned int iteration, unsigned int blocking) {
+void __attribute__((optimize("O0"))) testValidateBreak(unsigned int iteration, unsigned int blocking) {
 #ifdef GDB_TESTING
   // When testing with gdb, place breakpoint here
   volatile unsigned keepBlocking = blocking;
@@ -64,7 +64,7 @@ void  __attribute__((optimize("O0"))) testValidateBreak(unsigned int iteration, 
 }
 
 
-void  __attribute__((optimize("O0"))) testValidate(unsigned int iteration, unsigned int blocking) {
+void __attribute__((optimize("O0"))) testValidate(unsigned int iteration, unsigned int blocking) {
 #ifdef GDB_TESTING
   current_configuration = getConfigurationState();
   testValidateBreak(iteration, blocking);
