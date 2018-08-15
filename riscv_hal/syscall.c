@@ -70,7 +70,11 @@ void write_hex(int fd, uint32_t hex)
 }
 
                
+#ifdef GDB_TESTING
+void __attribute__((optimize("O0"))) _exit(int code)
+#else
 void _exit(int code)
+#endif
 {
 #ifdef MSCC_STDIO_THRU_CORE_UART_APB
     const char * message = "\nProgam has exited with code:";

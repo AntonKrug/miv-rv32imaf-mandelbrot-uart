@@ -48,9 +48,21 @@ end
 
 
 define test_setup_default
+  # Connect to OpenOCD / GDB server
   connect_openocd_default
+  
+  # Load the ELF file to the target
   load $arg0
+  
+  # Break in case of catastroficall fail (like a traphandler), don't forget 
+  # compile with GDB_TESTING define or the Release variantion might not trigger
+  # on this point even when it will be reached
+  break _exit
+  
+  # Break at the "checkpoint" to compare the expected and actual results
   break testValidateBreak
+  
+  # Start executing the code
   continue
 end
 
