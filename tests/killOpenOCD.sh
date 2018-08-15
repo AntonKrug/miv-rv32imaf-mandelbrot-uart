@@ -9,13 +9,12 @@ function kill_all_existing {
     PIDS=`pidof $1`
     if [ "$PIDS" ];
     then
-        if [[ "$(command -v sudo)" ]];
-        then
-            echo "Using regular kill (sudo is not present)"
-            kill $PIDS
-        else
+        if hash sudo 2>/dev/null; then
             echo "Using kill with sudo"
             sudo kill $PIDS
+        else
+            echo "Using regular kill (sudo is not present)"
+            kill $PIDS
         fi          
     fi
     sleep 3
@@ -24,13 +23,12 @@ function kill_all_existing {
     if [ "$PIDS" ];
     then
         # agressive kill
-        if [[ "$(command -v sudo)" ]];
-        then
-            echo "Using agressive regular kill (sudo is not present)"
-            kill -9 $PIDS
-        else
+        if hash sudo 2>/dev/null; then
             echo "Using agressive kill with sudo"
             sudo kill -9 $PIDS
+        else
+            echo "Using agressive regular kill (sudo is not present)"
+            kill -9 $PIDS
         fi 
     fi
     sleep 2
