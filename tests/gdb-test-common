@@ -9,26 +9,30 @@ define test_passed
   print "PASSED the test\n"
   print_separator
 
-  # arbirtary number just to make it different from other generic exit codes
+  # Arbirtary number just to make it different from other generic exit codes
   quit 149 
 end
 
 
 define test_failed
-  # if it is not catched by any pass conditions, then it must be fail
+  # If it is not catched by any pass conditions, then it must be fail
   print_separator
   printf "FAILED the test\n"
   print_separator
 
-  # arbirtary number just to make it different from other generic exit codes
+  # Arbirtary number just to make it different from other generic exit codes
   quit 150 
 end
 
 
-define test_failed_weak_test
+define process_failed
+  # Didn't even got to a testing and something on the way failed 
   print_separator
-  printf "test failing because of weak test suit\n"
+  printf "FAILED the process\n"
   print_separator
+
+  # Arbirtary number just to make it different from other generic exit codes
+  quit 151
 end
 
 
@@ -54,16 +58,61 @@ define test_setup_default
   # Load the ELF file to the target
   load $arg0
   
+  # Init the global test variables
+  set $gdb_tests_exit=0
+  set $gdb_tests_main=0
+  set $gdb_tests_validate_break=0
+  
   # Break in case of catastroficall fail (like a traphandler), don't forget 
   # compile with GDB_TESTING define or the Release variantion might not trigger
   # on this point even when it will be reached
   break _exit
+  commands
+    set $gdb_tests_exit=1
+  end
+
+  # Break for main 
+  break main
+  commands
+    set $gdb_tests_main=1
+  end
+  
   
   # Break at the "checkpoint" to compare the expected and actual results
   break testValidateBreak
+  commands
+    set $gdb_tests_validate_break=1
+  end
   
+  # Do not use "continue" in the same defined function as then the commands 
+  # attached to these breakpoints might not show up in time
+end
+
+
+define test_start
   # Start executing the code
+  printf "Starting the execution of the application, trying to reach main:"
   continue
+  
+  # Not realy needed to this in two steps, but this can disinguish problems 
+  # which can be happening before/after the main. 
+  if ($gdb_tests_main)
+    printf "Main reached, continue with the application:"
+    continue
+  else
+    # We triggered something else (mayb trap) when we should have been in main
+    # consider this as failure of the process itself.
+    process_failed
+  end
+ 
+end
+
+
+define fail_if_not_test_validate_breakpoint
+  if (!$gdb_tests_validate_break)
+    printf "Breakpoint reached is not testValidate."
+    process_failed
+  end
 end
 
 

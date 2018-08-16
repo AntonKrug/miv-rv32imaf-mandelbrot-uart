@@ -1,12 +1,25 @@
+# Load required GDB commands library
 source ../tests/gdb-test-common
 
+# Connect to the target, load ELF and setup common breakpoints
 test_setup_default miv-rv32imaf-mandelbrot-uart.elf
 
-# Arrived at the testValidateBreak breakpoint 
+# Start the execution of the application on the target
+test_start
 
+# ---- Arrived at a breakpoint ---- 
+
+fail_if_not_test_validate_breakpoint
+# It's the correct breakpoint (no traphandler), continue with evulation
+
+# Only for verbosity display enviroment information Hard/Soft float, 
+# Debug/Release and how many iteration the test was running
 test_display_enviroment iteration
 
+# Compare correct expected checksum with the actual calculated value, consider 
+# that the checksum changes depending how many times the algorithm was iterated
 assert_equals 0x8b2ae637*iteration actualChecksum
 
-# if it doesn't failed on any previous asserts then that means they all passed 
+# If the test didn't fail on any previous asserts then this means they passed.
+# So conclude this whole test as PASS. 
 test_passed 
