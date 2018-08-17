@@ -5,12 +5,22 @@ source ../tests/gdb-test-common
 test_setup_default miv-rv32imaf-mandelbrot-uart.elf
 
 # Start the execution of the application on the target
-test_start
+printf "Starting the execution of the application, trying to reach main:\n"
+continue
 
-# ---- Arrived at a breakpoint ---- 
+# Fail if wrong breakpoint was triggered here
+fail_if_not_test_main
 
+# Do not call "continue" from within a defined function as for some reason
+# the attached "commands" with the breakpoints will not trigger
+printf "Main reached, continue with the application:\n"  
+continue
+
+#Arrived at another breakpoint 
 fail_if_not_test_validate_breakpoint
-# It's the correct breakpoint (no traphandler), continue with evulation
+
+# It's the correct breakpoint (no traphandler), continue with the test evulation
+
 
 # Only for verbosity display enviroment information Hard/Soft float, 
 # Debug/Release and how many iteration the test was running
