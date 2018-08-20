@@ -28,7 +28,22 @@ test_display_enviroment iteration
 
 # Compare correct expected checksum with the actual calculated value, consider 
 # that the checksum changes depending how many times the algorithm was iterated
-assert_equals 0x8b2ae637*iteration actualChecksum
+
+if (current_configuration & 4)
+    # Hard float
+    
+    if (current_configuration & 8)
+        # Debug hard variant has different results than
+        assert_equals 0x8b2ae637*iteration actualChecksum
+    else
+        # release hard variant
+        assert_equals 0xbc8741a3*iteration actualChecksum
+    end
+    
+else
+    # Soft float, for both Debug/Release gives same results
+    assert_equals 0x8b2ae637*iteration actualChecksum
+end
 
 # If the test didn't fail on any previous asserts then this means they passed.
 # So conclude this whole test as PASS. 

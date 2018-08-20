@@ -27,7 +27,12 @@ unsigned int __attribute__((optimize("O0"))) getConfigurationState() {
   unsigned int ret = 0;
 
   ret |= CONFIGURATION_RISCV;
+
+#ifdef NDEBUG
+  ret |= CONFIGURATION_OPTIMALIZATION_3;
+#else
   ret |= CONFIGURATION_OPTIMALIZATION_0;
+#endif
 
 #ifdef __riscv_flen
   ret |= CONFIGURATION_HARDFLOAT;
